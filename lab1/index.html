@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFlow | Smart Campus Infrastructure & Resource Monetization</title>
+  <meta name="description" content="CampusFlow helps universities unlock underused venues with AI-assisted dynamic pricing, conflict-free booking, and streamlined campus reservations.">
+  <meta name="theme-color" content="#071A2B">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#071A2B",
+            navy: "#0B2742",
+            blue: "#175EA8",
+            gold: "#C8873B",
+            cream: "#FBF5EC",
+            teal: "#2D7775",
+            mist: "#F1F3F1"
+          },
+          fontFamily: {
+            display: ["Georgia", "Times New Roman", "serif"],
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+          },
+          boxShadow: {
+            elegant: "0 24px 70px rgba(7,26,43,.14)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    .display { font-family: Georgia, "Times New Roman", serif; }
+    .gold-line { background: linear-gradient(90deg, #C8873B, transparent); }
+    .hero-overlay {
+      background:
+        linear-gradient(90deg, rgba(7,26,43,.97) 0%, rgba(7,26,43,.83) 42%, rgba(7,26,43,.28) 78%, rgba(7,26,43,.42) 100%);
+    }
+    .grid-pattern {
+      background-image:
+        linear-gradient(rgba(200,135,59,.11) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,135,59,.11) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+    .wave-top { clip-path: ellipse(80% 100% at 50% 100%); }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    .venue-card:hover img { transform: scale(1.05); }
+    .venue-card img { transition: transform .6s ease; }
+    .nav-scrolled { box-shadow: 0 8px 30px rgba(7,26,43,.10); }
+    input[type="range"] { accent-color: #C8873B; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .venue-card img { transition: none; }
+    }
+  </style>
+</head>
+
+<body class="bg-cream text-slate-800">
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/90 text-white backdrop-blur-md transition-all">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8" aria-label="Primary navigation">
+      <a href="#home" class="flex items-center gap-3" aria-label="CampusFlow home">
+        <span class="grid h-10 w-10 place-items-center border border-gold/70 text-gold">
+          <span class="text-lg font-black">C</span>
+        </span>
+        <span>
+          <span class="block text-lg font-black tracking-[.18em]">CAMPUSFLOW</span>
+          <span class="block text-[8px] tracking-[.32em] text-gold">SMART CAMPUS RESOURCES</span>
+        </span>
+      </a>
+      <div class="hidden items-center gap-7 text-xs font-bold uppercase tracking-wide lg:flex">
+        <a href="#opportunity" class="transition hover:text-gold">Opportunity</a>
+        <a href="#features" class="transition hover:text-gold">Solutions</a>
+        <a href="#stakeholders" class="transition hover:text-gold">Stakeholders</a>
+        <a href="#process" class="transition hover:text-gold">How It Works</a>
+        <a href="#why" class="transition hover:text-gold">Why CampusFlow</a>
+        <a href="#contact" class="border border-gold px-5 py-2.5 text-gold transition hover:bg-gold hover:text-ink">Make an Inquiry</a>
+      </div>
+      <button id="menuBtn"
+              class="rounded-lg border border-white/20 p-2 lg:hidden"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="mobileMenu">
+        <span class="text-xl">☰</span>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden border-t border-white/10 bg-ink px-5 py-5 lg:hidden">
+      <div class="flex flex-col gap-4 text-sm font-bold uppercase tracking-wide">
+        <a href="#opportunity" class="hover:text-gold">Opportunity</a>
+        <a href="#features" class="hover:text-gold">Solutions</a>
+        <a href="#stakeholders" class="hover:text-gold">Stakeholders</a>
+        <a href="#process" class="hover:text-gold">How It Works</a>
+        <a href="#contact" class="text-gold">Make an Inquiry</a>
+      </div>
+    </div>
+  </header>
+  <main id="main-content">
+
+    <!-- ==================== HERO ==================== -->
+    <section id="home" class="relative min-h-[760px] overflow-hidden bg-ink text-white">
+      <div class="absolute inset-0">
+        <img
+        src="main audi.png"
+        alt="Modern university campus building"
+          class="h-full w-full object-cover">
+        <div class="hero-overlay absolute inset-0"></div>
+      </div>
+      <div class="grid-pattern absolute inset-0 opacity-50"></div>
+      <div class="relative mx-auto flex min-h-[760px] max-w-7xl items-end px-5 pb-20 pt-36 lg:px-8 lg:pb-28">
+        <div class="max-w-4xl reveal">
+          <div class="mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[.25em] text-gold">
+            <span class="h-px w-10 bg-gold"></span>
+            Smart Campus Infrastructure
+          </div>
+          <h1 class="display max-w-4xl text-5xl leading-[.98] sm:text-6xl lg:text-8xl">
+            Make every campus
+            <span class="text-gold">space work harder.</span>
+          </h1>
+           <p class="mt-7 max-w-2xl text-base leading-7 text-slate-200 sm:text-lg">
+            CampusFlow transforms underused university venues into intelligent, bookable resources —
+            combining AI-assisted dynamic pricing, automatic conflict detection, and a simpler
+            reservation experience.
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#contact" class="inline-flex items-center justify-center gap-3 bg-gold px-7 py-3.5 font-bold text-ink transition hover:bg-white">
+              Explore Venue Opportunities
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="#features" class="inline-flex items-center justify-center border border-white/40 bg-white/5 px-7 py-3.5 font-bold text-white backdrop-blur transition hover:border-gold hover:text-gold">
+              Discover the Solution
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero stats strip -->
+      <div class="absolute inset-x-0 bottom-0 border-t border-white/15 bg-ink/85 backdrop-blur">
+        <div class="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-white/10 sm:grid-cols-4 lg:px-8">
+          <div class="px-5 py-5">
+            <p class="text-2xl font-black text-gold">24/7</p>
+            <p class="mt-1 text-[10px] uppercase tracking-widest text-slate-300">Venue visibility</p>
+          </div>
+          <div class="px-5 py-5">
+            <p class="text-2xl font-black text-gold">AI</p>
+            <p class="mt-1 text-[10px] uppercase tracking-widest text-slate-300">Pricing assistance</p>
+          </div>
+          <div class="px-5 py-5">
+            <p class="text-2xl font-black text-gold">0</p>
+            <p class="mt-1 text-[10px] uppercase tracking-widest text-slate-300">Avoidable conflicts</p>
+          </div>
+          <div class="px-5 py-5">
+            <p class="text-2xl font-black text-gold">1</p>
+            <p class="mt-1 text-[10px] uppercase tracking-widest text-slate-300">Connected workflow</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== OPPORTUNITY ==================== -->
+    <section id="opportunity" class="bg-cream py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="grid gap-14 lg:grid-cols-2 lg:items-center">
+          <div class="reveal">
+            <p class="text-xs font-black uppercase tracking-[.25em] text-gold">The opportunity</p>
+            <h2 class="display mt-4 text-4xl leading-tight text-ink sm:text-5xl">
+              Your campus has more capacity than your calendar shows.
+            </h2>
+            <div class="gold-line mt-6 h-px w-32"></div>
+            <p class="mt-6 max-w-xl text-base leading-8 text-slate-600">
+              Auditoriums, seminar halls, sports facilities, studios and specialized spaces
+              can sit empty outside peak academic hours. Meanwhile, external organizations
+              search for affordable venues and student clubs navigate slow manual approvals.
+            </p>
+            <p class="mt-4 max-w-xl text-base leading-8 text-slate-600">
+              CampusFlow connects these needs in one intelligent experience — turning idle
+              capacity into measurable utilization and potential revenue.
+            </p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+            <article class="reveal flex gap-5 border-l-2 border-gold bg-white p-6 shadow-sm">
+              <span class="text-3xl font-black text-gold">01</span>
+              <div>
+                <h3 class="font-black text-ink">Underused spaces</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-500">High-value facilities can remain idle during evenings, weekends and academic breaks.</p>
+              </div>
+            </article>
+            <article class="reveal flex gap-5 border-l-2 border-blue bg-white p-6 shadow-sm">
+              <span class="text-3xl font-black text-blue">02</span>
+              <div>
+                <h3 class="font-black text-ink">Manual coordination</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-500">Messages, spreadsheets and disconnected calendars create avoidable booking friction.</p>
+              </div>
+            </article>
+            <article class="reveal flex gap-5 border-l-2 border-teal bg-white p-6 shadow-sm">
+              <span class="text-3xl font-black text-teal">03</span>
+              <div>
+                <h3 class="font-black text-ink">Missed value</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-500">Without demand-aware pricing, available infrastructure may not generate its full potential.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED VENUES ==================== -->
+    <section class="bg-ink py-20 text-white lg:py-24" aria-labelledby="venues-title">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end reveal">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.25em] text-gold">Available resources</p>
+            <h2 id="venues-title" class="display mt-3 text-4xl sm:text-5xl">Spaces built for possibility.</h2>
+          </div>
+          <p class="max-w-md text-sm leading-6 text-slate-300">
+            From community events to student activities, make the right space discoverable at the right time.
+          </p>
+        </div>
+        <div class="mx-auto mt-10 grid max-w-4xl justify-items-center gap-5 md:grid-cols-2">
+          <article class="venue-card w-full max-w-md overflow-hidden border border-white/10 bg-[#40251B] reveal">
+            <div class="h-56 overflow-hidden">
+              <img src="main1.jpg"
+                   alt="Large auditorium prepared for an event" class="h-full w-full object-cover">
+            </div>
+            <div class="p-6">
+              <p class="text-[10px] font-bold uppercase tracking-widest text-gold">Event venue</p>
+              <h3 class="display mt-2 text-2xl">Grand Auditorium</h3>
+              <p class="mt-2 text-sm text-slate-400">Capacity · 600 guests</p>
+              <a href="#contact" class="mt-5 inline-flex text-sm font-bold text-gold hover:text-white">Enquire about this space →</a>
+            </div>
+          </article>
+          <article class="venue-card w-full max-w-md overflow-hidden border border-white/10 bg-[#243A42] reveal">
+            <div class="h-56 overflow-hidden">
+              <img src="seminarhall.jpg"
+              alt="Modern collaborative seminar space" class="h-full w-full object-cover">
+            </div>
+            <div class="p-6">
+              <p class="text-[10px] font-bold uppercase tracking-widest text-gold">Academic & corporate</p>
+              <h3 class="display mt-2 text-2xl">Innovation Hall</h3>
+              <p class="mt-2 text-sm text-slate-400">Capacity · 180 guests</p>
+              <a href="#contact" class="mt-5 inline-flex text-sm font-bold text-gold hover:text-white">Enquire about this space →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURES ==================== -->
+    <section id="features" class="bg-white py-20 lg:py-28" aria-labelledby="features-title">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center reveal">
+          <p class="text-xs font-black uppercase tracking-[.25em] text-gold">What the system does</p>
+          <h2 id="features-title" class="display mt-3 text-4xl text-ink sm:text-5xl">Intelligence behind every reservation.</h2>
+          <p class="mt-5 leading-7 text-slate-500">
+            Designed around the real needs of facility teams, external partners and student organizations.
+          </p>
+        </div>
+        <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="reveal border border-slate-200 bg-cream p-7 transition hover:-translate-y-1 hover:shadow-elegant">
+            <span class="text-sm font-black text-gold">01</span>
+            <h3 class="mt-4 text-xl font-black text-ink">AI Dynamic Pricing</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">
+              Suggest rental rates using demand, timing, venue type, duration and utilization patterns.
+            </p>
+          </article>
+          <article class="reveal border border-slate-200 bg-cream p-7 transition hover:-translate-y-1 hover:shadow-elegant">
+            <span class="text-sm font-black text-blue">02</span>
+            <h3 class="mt-4 text-xl font-black text-ink">Conflict Detection</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">
+              Identify overlapping schedules, blocked periods, capacity problems and venue clashes before confirmation.
+            </p>
+          </article>
+          <article class="reveal border border-slate-200 bg-cream p-7 transition hover:-translate-y-1 hover:shadow-elegant">
+            <span class="text-sm font-black text-teal">03</span>
+            <h3 class="mt-4 text-xl font-black text-ink">Streamlined Club Booking</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">
+              Let student officers find spaces, check availability and submit requests without unnecessary back-and-forth.
+            </p>
+          </article>
+          <article class="reveal border border-slate-200 bg-cream p-7 transition hover:-translate-y-1 hover:shadow-elegant">
+            <span class="text-sm font-black text-gold">04</span>
+            <h3 class="mt-4 text-xl font-black text-ink">Revenue Optimization</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">
+              Help finance teams understand where demand exists and where unused capacity can create additional value.
+            </p>
+          </article>
+          <article class="reveal border border-slate-200 bg-cream p-7 transition hover:-translate-y-1 hover:shadow-elegant">
+            <span class="text-sm font-black text-blue">05</span>
+            <h3 class="mt-4 text-xl font-black text-ink">Centralized Management</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">
+              Bring venues, schedules, inquiries, pricing and utilization insights into one coordinated workflow.
+            </p>
+          </article>
+          <article class="reveal border border-slate-200 bg-cream p-7 transition hover:-translate-y-1 hover:shadow-elegant">
+            <span class="text-sm font-black text-teal">06</span>
+            <h3 class="mt-4 text-xl font-black text-ink">Utilization Analytics</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">
+              Track demand, popular venues, peak periods and booking patterns for better campus planning.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STAKEHOLDERS ==================== -->
+    <section id="stakeholders" class="bg-cream py-20 lg:py-28" aria-labelledby="stakeholder-title">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="reveal">
+          <p class="text-xs font-black uppercase tracking-[.25em] text-gold">Built around people</p>
+          <h2 id="stakeholder-title" class="display mt-3 text-4xl text-ink sm:text-5xl">Different needs. One connected experience.</h2>
+        </div>
+        <div class="mt-12 grid gap-6 lg:grid-cols-3">
+          <article class="reveal bg-ink p-8 text-white">
+            <p class="text-xs font-black uppercase tracking-widest text-gold">01 · External clients</p>
+            <h3 class="display mt-4 text-3xl">Find a venue with confidence.</h3>
+            <ul class="mt-6 space-y-3 text-sm leading-6 text-slate-300">
+              <li>✓ Discover suitable campus spaces</li>
+              <li>✓ Understand capacity and availability</li>
+              <li>✓ Receive pricing guidance</li>
+              <li>✓ Send an inquiry quickly</li>
+            </ul>
+            <a href="#contact" class="mt-8 inline-flex border border-gold px-5 py-3 text-sm font-bold text-gold hover:bg-gold hover:text-ink">Request a Venue →</a>
+          </article>
+          <article class="reveal bg-white p-8 shadow-sm ring-1 ring-slate-200">
+            <p class="text-xs font-black uppercase tracking-widest text-blue">02 · Facility & finance</p>
+            <h3 class="display mt-4 text-3xl text-ink">Optimize campus assets.</h3>
+            <ul class="mt-6 space-y-3 text-sm leading-6 text-slate-600">
+              <li>✓ Reduce scheduling conflicts</li>
+              <li>✓ Monitor utilization patterns</li>
+              <li>✓ Explore demand-based pricing</li>
+              <li>✓ Identify revenue opportunities</li>
+            </ul>
+            <a href="#contact" class="mt-8 inline-flex bg-blue px-5 py-3 text-sm font-bold text-white hover:bg-ink">Discuss Administration →</a>
+          </article>
+          <article class="reveal bg-white p-8 shadow-sm ring-1 ring-slate-200">
+            <p class="text-xs font-black uppercase tracking-widest text-teal">03 · Student clubs</p>
+            <h3 class="display mt-4 text-3xl text-ink">Book without the hassle.</h3>
+            <ul class="mt-6 space-y-3 text-sm leading-6 text-slate-600">
+              <li>✓ Check availability early</li>
+              <li>✓ Avoid overlapping bookings</li>
+              <li>✓ Submit organized requests</li>
+              <li>✓ Track the reservation workflow</li>
+            </ul>
+            <a href="#contact" class="mt-8 inline-flex bg-teal px-5 py-3 text-sm font-bold text-white hover:bg-ink">Ask About Club Booking →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROCESS ==================== -->
+    <section id="process" class="bg-white py-20 lg:py-24" aria-labelledby="process-title">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center reveal">
+          <p class="text-xs font-black uppercase tracking-[.25em] text-gold">Our process</p>
+          <h2 id="process-title" class="display mt-3 text-4xl text-ink sm:text-5xl">From available space to smarter booking.</h2>
+        </div>
+        <ol class="mt-14 grid gap-6 md:grid-cols-4">
+          <li class="reveal border-t-2 border-gold pt-5">
+            <span class="text-4xl font-black text-gold">01</span>
+            <h3 class="mt-4 font-black text-ink">Discover</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-500">Browse venues by type, capacity, timing and availability.</p>
+          </li>
+          <li class="reveal border-t-2 border-blue pt-5">
+            <span class="text-4xl font-black text-blue">02</span>
+            <h3 class="mt-4 font-black text-ink">Evaluate</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-500">AI-assisted pricing considers demand and booking conditions.</p>
+          </li>
+          <li class="reveal border-t-2 border-teal pt-5">
+            <span class="text-4xl font-black text-teal">03</span>
+            <h3 class="mt-4 font-black text-ink">Validate</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-500">Conflict checks flag schedule and capacity issues before confirmation.</p>
+          </li>
+          <li class="reveal border-t-2 border-gold pt-5">
+            <span class="text-4xl font-black text-gold">04</span>
+            <h3 class="mt-4 font-black text-ink">Confirm</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-500">The appropriate team completes the reservation workflow.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="why"class="py-20 bg-slate-900 text-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center">
+            <p class="text-yellow-400 font-bold uppercase tracking-widest text-sm">
+                Why CampusFlow?
+            </p>
+            <h2 class="text-4xl font-bold mt-3">
+                Benefits for the Entire Campus
+            </h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 mt-12">
+            <article class="border border-slate-700 p-7 rounded-lg">
+                <h3 class="text-2xl font-bold">
+                    For Students
+                </h3>
+                <p class="mt-4 text-slate-300 leading-7">
+                    Easier access to spaces for clubs, events,
+                    workshops and student activities.
+                </p>
+            </article>
+            <article class="border border-slate-700 p-7 rounded-lg">
+                <h3 class="text-2xl font-bold">
+                    For Administrators
+                </h3>
+                <p class="mt-4 text-slate-300 leading-7">
+                    Better visibility of bookings, schedules and
+                    campus resource utilization.
+                </p>
+            </article>
+            <article class="border border-slate-700 p-7 rounded-lg">
+                <h3 class="text-2xl font-bold">
+                    For Universities
+                </h3>
+                <p class="mt-4 text-slate-300 leading-7">
+                    Improved space utilization and potential
+                    additional revenue from unused facilities.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="bg-[#F2E8DA] py-14 lg:py-20" aria-labelledby="contact-title">
+      <div class="mx-auto max-w-2xl px-5 text-center lg:px-8">
+        <div class="reveal">
+          <p class="text-xs font-black uppercase tracking-[.25em] text-gold">Contact & inquiry</p>
+          <h2 id="contact-title" class="display mt-3 text-4xl text-ink sm:text-5xl">Tell us what you need.</h2>
+          <p class="mx-auto mt-4 max-w-xl text-sm leading-7 text-slate-600">
+            Whether you are planning an event, managing campus facilities, or coordinating
+            a student club activity, start the conversation here.
+          </p>
+          <address class="mx-auto mt-6 flex max-w-xl flex-col gap-4 not-italic sm:flex-row sm:justify-center sm:gap-10">
+            <div class="border-t-2 border-gold pt-3 sm:min-w-[220px]">
+              <p class="text-xs font-black uppercase tracking-widest text-slate-400">General inquiries</p>
+              <a href="mailto:campusflow@university.edu" class="mt-1 block font-bold text-ink hover:text-blue">campusflow@university.edu</a>
+            </div>
+            <div class="border-t-2 border-blue pt-3 sm:min-w-[260px]">
+              <p class="text-xs font-black uppercase tracking-widest text-slate-400">Facilities team</p>
+              <p class="mt-1 font-bold text-ink">Campus Infrastructure & Partnerships Office</p>
+            </div>
+          </address>
+        </div> 
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-ink text-white">
+    <div class="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3">
+            <span class="grid h-10 w-10 place-items-center border border-gold text-gold font-black">C</span>
+            <div>
+              <p class="font-black tracking-[.18em]">CAMPUSFLOW</p>
+              <p class="text-[8px] tracking-[.32em] text-gold">SMART CAMPUS RESOURCES</p>
+            </div>
+          </div>
+          <p class="mt-5 max-w-md text-sm leading-7 text-slate-400">
+            Intelligent campus infrastructure management that connects available spaces
+            with the people who need them.
+          </p>
+        </div>
+      </div>
+      <div class="mt-10 flex flex-col justify-between gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row">
+        <p>© <span id="year"></span> CampusFlow. All rights reserved.</p>
+        <p>Smart infrastructure · Better utilization · Sustainable growth</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => {
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        mobileMenu.classList.toggle("hidden");
+        menuBtn.setAttribute(
+            "aria-expanded",
+            String(!isOpen)
+        );
+        menuBtn.setAttribute(
+            "aria-label",
+            isOpen ? "Open navigation menu" : "Close navigation menu"
+        );
+    });
+    // Close mobile menu after selecting a section
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+        link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            menuBtn.setAttribute("aria-expanded", "false");
+            menuBtn.setAttribute("aria-label", "Open navigation menu");
+        });
+    });
+    // Header shadow when scrolling
+    const header = document.getElementById("siteHeader");
+    window.addEventListener("scroll", () => {
+        header.classList.toggle(
+            "nav-scrolled",
+            window.scrollY > 20
+        );
+    });
+    // Scroll reveal animation
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.1
+        }
+    );
+    document.querySelectorAll(".reveal").forEach(element => {
+        observer.observe(element);
+    });
+    // Automatically display the current year
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+</body>
+</html>
