@@ -71,38 +71,4 @@ Then open:
 
 ```text
 http://localhost:8000
-```
-
-## GitHub submission
-
-```bash
-git init
-git add .
-git commit -m "Create CampusFlow smart campus landing page"
-git branch -M main
-git remote add origin YOUR_GITHUB_REPOSITORY_URL
-git push -u origin main
-```
-
-For GitHub Pages:
-1. Push the repository.
-2. Open repository Settings.
-3. Open Pages.
-4. Select the `main` branch and root folder.
-5. Save.
-6. Open the generated Pages URL.
-
-## Testing completed
-
-The HTML structure was programmatically checked for:
-- HTML5 doctype
-- Required semantic tags
-- Page title
-- Navigation
-- Hero section
-- Multiple content sections
-- Footer
-- Form labels
-- No login/register wording or form controls
-
-The page also contains client-side validation for the inquiry form and JavaScript interaction for the mobile menu and pricing demonstration.
+``
